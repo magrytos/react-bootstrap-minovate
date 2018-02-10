@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import './scss/font-awesome.css'
 // minovate styles
-import './scss/main.css'
+import './styles.scss'
 
 import Layout from './components/Layout'
 

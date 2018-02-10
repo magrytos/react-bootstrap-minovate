@@ -10,7 +10,7 @@ const LeftSideNavigation = () => {
         <div id="sidebar-wrap">
           <div className="panel-group slim-scroll" role="tablist">
             <div className="panel panel-default">
-              <div id="sidebarNav" role="tabpanel">
+              <div id="sidebarNav" className="panel-collapse collapse in" role="tabpanel">
                 <div className="panel-body">
                   <ul id="navigation">
                     <li>
