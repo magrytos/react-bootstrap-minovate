@@ -22,5 +22,6 @@ yarn-error.log*
 
 /minovate-dashboard
 /minovate-scss
+/src/to_integrate_within_react_components
 
 

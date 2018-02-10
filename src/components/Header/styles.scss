@@ -1,3 +1,9 @@
+@import 'variables';
+@import 'mixins';
+@import 'burbon-css3-transition';
+@import 'burbon-addon-timing-functions';
+@import 'burbon-css3-placeholder';
+
 .appWrapper.header-fixed {
   #header {
     position: fixed;
@@ -35,7 +41,7 @@
 #header {
   background-color: $header-bg;
   z-index: 1001;
-  transition: right 0.25s $ease-in-circ, padding-right 0.25s $ease-in-circ;
+  @include transition(right 0.25s $ease-in-circ, padding-right 0.25s $ease-in-circ);
 
   .branding {
     background-color: $sidebar-bg;
@@ -52,9 +58,9 @@
       padding-left: 30px;
       height: 45px;
       line-height: 45px;
-      background: url(../img/minovate-logo.png) no-repeat 0 10px;
+      background: url(/public/assets/images/minovate-logo.png) no-repeat 0 10px;
       float: left;
-      transition: none;
+      @include transition(none);
 
       &:hover {
         text-decoration: none;
@@ -84,7 +90,7 @@
     }
 
     &:after {
-      content: "\f002";
+      content: '\f002';
       @include icon;
       position: absolute;
       top: 0;
@@ -99,7 +105,7 @@
       font-family: $font-ubuntu-mono;
       font-size: 16px;
 
-      &::placeholder {
+      @include placeholder {
         color: $transparent-white-25;
         font-style: normal;
         font-size: 16px;
@@ -109,7 +115,7 @@
       &:focus {
         border-color: $transparent-white-7;
 
-        &::placeholder {
+        @include placeholder {
           color: $transparent-white-7;
         }
       }
@@ -425,7 +431,7 @@
 .appWrapper {
   &.sidebar-xs {
     .sidebar-collapse i:before {
-      content: "\f03c";
+      content: '\f03c';
     }
   }
 }
