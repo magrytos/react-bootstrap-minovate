@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 // vendor css files
 import 'bootstrap/dist/css/bootstrap.css'
-import './scss/font-awesome.css'
+import './public/styles/font-awesome.min.css'
 // minovate styles
 import './styles.scss'
 
