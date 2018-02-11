@@ -1,7 +1,5 @@
 const path = require('path')
 
-const dupa = path.resolve(__dirname, './src/styles/mixins.scss')
-console.log(dupa)
 module.exports = function override(config, env) {
   config.module.rules[1].oneOf.splice(config.module.rules[1].oneOf.length - 1, 0, {
     test: /\.scss$/,
@@ -11,7 +9,7 @@ module.exports = function override(config, env) {
       {
         loader: 'sass-loader',
         options: {
-          includePaths: [path.resolve(__dirname, './src/public/styles')],
+          includePaths: [path.resolve(__dirname, './src/public/styles/vendor')],
         },
       },
     ],

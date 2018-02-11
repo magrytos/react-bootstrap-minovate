@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import './styles.scss'
 
 const initialState = {
   isOpen: false,
@@ -16,47 +18,43 @@ class ProfileMenu extends React.Component {
 
   render() {
     const { isOpen } = this.state
+    const { user, onLogout } = this.props
     const isOpenClassName = isOpen ? 'open' : ''
+    const menuClass = user ? '' : 'bm-menuList-noUser'
+    const profileButton = user ? (
+      <Fragment>
+        <img src="assets/images/profile-photo.jpg" alt="" className="img-circle size-30x30" />
+        <span>
+          {`${user.firstName} ${user.lastName}`}
+          <i className="fa fa-angle-down" />
+        </span>
+      </Fragment>
+    ) : (
+      <i className="fa fa-user" />
+    )
     return (
-      <ul className="nav-right pull-right list-inline">
+      <ul className="nav-right pull-right list-inline bm-profileMenu">
         <li onClick={this.toggleProfileMenu} className={`dropdown nav-profile ${isOpenClassName}`}>
           <a href className="dropdown-toggle" data-toggle="dropdown">
-            <img src="assets/images/profile-photo.jpg" alt="" className="img-circle size-30x30" />
-            <span>
-              John Douey
-              <i className="fa fa-angle-down" />
-            </span>
+            {profileButton}
           </a>
 
-          <ul className="dropdown-menu animated littleFadeInRight" role="menu">
-            <li>
-              <a href="#">
-                <span className="badge bg-greensea pull-right">86%</span>
-                <i className="fa fa-user" />Profile
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="label bg-lightred pull-right">new</span>
-                <i className="fa fa-check" />Tasks
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-cog" />Settings
-              </a>
-            </li>
-            <li className="divider" />
-            <li>
-              <a href="#">
-                <i className="fa fa-lock" />Lock
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-sign-out" />Logout
-              </a>
-            </li>
+          <ul className={`dropdown-menu animated littleFadeInRight ${menuClass}`} role="menu">
+            {user && (
+              <li>
+                <a role="button" onClick={onLogout}>
+                  <i className="fa fa-sign-out" />Wyloguj
+                </a>
+              </li>
+            )}
+            {!user && (
+              <li>
+                <Link to="/login">
+                  <i className="fa fa-sign-in" />
+                  Zaloguj
+                </Link>
+              </li>
+            )}
           </ul>
         </li>
       </ul>

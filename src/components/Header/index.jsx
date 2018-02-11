@@ -1,10 +1,21 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { logout } from 'state/auth/actions'
+import * as authSelectors from 'state/auth/selectors'
 
 import ProfileMenu from './profile-menu'
 
 import './styles.scss'
 
-const Header = () => {
+const mapStateToProps = state => ({
+  user: authSelectors.getUser(state),
+})
+const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch)
+
+const Header = props => {
+  const { user, logout } = props
   return (
     <section id="header">
       <header className="clearfix">
@@ -18,10 +29,10 @@ const Header = () => {
             <i className="fa fa-bars" />
           </a>
         </div>
-        <ProfileMenu />
+        <ProfileMenu user={user} onLogout={logout} />
       </header>
     </section>
   )
 }
 
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

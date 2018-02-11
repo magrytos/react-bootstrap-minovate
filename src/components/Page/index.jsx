@@ -14,7 +14,7 @@ import Withdrawals from 'pages/withdrawals'
 
 import './styles.scss'
 
-const Layout = () => (
+const Page = () => (
   <Fragment>
     <Route path="/login" component={Login} />
     <Route exact path="/" component={DashboardPageWrapper(Market)} />
@@ -27,4 +27,4 @@ const Layout = () => (
   </Fragment>
 )
 
-export default Layout
+export default Page

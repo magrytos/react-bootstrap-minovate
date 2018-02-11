@@ -1,68 +1,83 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { login } from 'state/auth/actions'
+
+const mapStateToProps = state => state.auth
+const mapDispatchToProps = dispatch => bindActionCreators({ login }, dispatch)
 
 class Login extends React.Component {
-  constructor() {
-    super()
+  componentWillReceiveProps(newProps) {
+    if (newProps.user) {
+      this.props.history.push('/')
+    }
   }
+
+  submit = e => {
+    e.preventDefault()
+    this.props.login()
+  }
+
   render() {
     return (
-      <div id="wrap" class="animsition">
-        <div class="page page-core page-login">
-          <div class="text-center">
-            <h3 class="text-light text-white">
-              <span class="text-lightred">M</span>INOVATE
+      <div id="wrap" className="animsition">
+        <div className="page page-core page-login">
+          <div className="text-center">
+            <h3 className="text-light text-white">
+              <span className="text-lightred">M</span>INOVATE
             </h3>
           </div>
 
-          <div class="container w-420 p-15 bg-white mt-40 text-center">
-            <h2 class="text-light text-greensea">Log In</h2>
-            <form name="form" class="form-validation mt-20" novalidate="">
-              <div class="form-group">
-                <input type="email" class="form-control underline-input" placeholder="Email" />
+          <div className="container w-420 p-15 bg-white mt-40 text-center">
+            <h2 className="text-light text-greensea">Log In</h2>
+            <form onSubmit={this.submit} name="form" className="form-validation mt-20">
+              <div className="form-group">
+                <input type="email" className="form-control underline-input" placeholder="Email" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <input
                   type="password"
                   placeholder="Password"
-                  class="form-control underline-input"
+                  className="form-control underline-input"
                 />
               </div>
-              <div class="form-group text-left mt-20">
-                <a href="index.html" class="btn btn-greensea b-0 br-2 mr-5">
+              <div className="form-group text-left mt-20">
+                <button type="submit" className="btn btn-greensea b-0 br-2 mr-5">
                   Login
-                </a>
-                <label class="checkbox checkbox-custom-alt checkbox-custom-sm inline-block">
+                </button>
+                <label className="checkbox checkbox-custom-alt checkbox-custom-sm inline-block">
                   <input type="checkbox" />
                   <i /> Remember me
                 </label>
-                <a href="forgotpass.html" class="pull-right mt-10">
+                <a href="forgotpass.html" className="pull-right mt-10">
                   Forgot Password?
                 </a>
               </div>
             </form>
 
-            <hr class="b-3x" />
+            <hr className="b-3x" />
 
-            <div class="social-login text-left">
-              <ul class="pull-right list-unstyled list-inline">
-                <li class="p-0">
-                  <a class="btn btn-sm btn-primary b-0 btn-rounded-20" href="javascript:;">
-                    <i class="fa fa-facebook" />
+            <div className="social-login text-left">
+              <ul className="pull-right list-unstyled list-inline">
+                <li className="p-0">
+                  <a className="btn btn-sm btn-primary b-0 btn-rounded-20" href="javascript:;">
+                    <i className="fa fa-facebook" />
                   </a>
                 </li>
-                <li class="p-0">
-                  <a class="btn btn-sm btn-info b-0 btn-rounded-20" href="javascript:;">
-                    <i class="fa fa-twitter" />
+                <li className="p-0">
+                  <a className="btn btn-sm btn-info b-0 btn-rounded-20" href="javascript:;">
+                    <i className="fa fa-twitter" />
                   </a>
                 </li>
-                <li class="p-0">
-                  <a class="btn btn-sm btn-lightred b-0 btn-rounded-20" href="javascript:;">
-                    <i class="fa fa-google-plus" />
+                <li className="p-0">
+                  <a className="btn btn-sm btn-lightred b-0 btn-rounded-20" href="javascript:;">
+                    <i className="fa fa-google-plus" />
                   </a>
                 </li>
-                <li class="p-0">
-                  <a class="btn btn-sm btn-primary b-0 btn-rounded-20" href="javascript:;">
-                    <i class="fa fa-linkedin" />
+                <li className="p-0">
+                  <a className="btn btn-sm btn-primary b-0 btn-rounded-20" href="javascript:;">
+                    <i className="fa fa-linkedin" />
                   </a>
                 </li>
               </ul>
@@ -70,9 +85,9 @@ class Login extends React.Component {
               <h5>Or login with</h5>
             </div>
 
-            <div class="bg-slategray lt wrap-reset mt-40">
-              <p class="m-0">
-                <a href="signup.html" class="text-uppercase">
+            <div className="bg-slategray lt wrap-reset mt-40">
+              <p className="m-0">
+                <a href="signup.html" className="text-uppercase">
                   Create an account
                 </a>
               </p>
@@ -84,4 +99,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
