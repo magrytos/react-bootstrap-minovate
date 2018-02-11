@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ProfileMenu from './profile-menu'
+
 import './styles.scss'
 
 const Header = () => {
@@ -16,6 +18,7 @@ const Header = () => {
             <i className="fa fa-bars" />
           </a>
         </div>
+        <ProfileMenu />
       </header>
     </section>
   )

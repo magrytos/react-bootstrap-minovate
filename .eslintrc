@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "react-app", "prettier"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -10,8 +10,13 @@
         "semi": false,
         "parser": "babylon"
       }
-    ]
+    ],
+    "no-unused-vars": ["error"],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   },
+  "parser": "babel-eslint",
   "globals": {
     "window": true
   },

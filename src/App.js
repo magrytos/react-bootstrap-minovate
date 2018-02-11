@@ -6,14 +6,17 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './public/styles/font-awesome.min.css'
 // minovate styles
 import './styles.scss'
+import './bitmarket24.scss'
+import './public/styles/form-elements.scss'
+import './public/styles/buttons.scss'
 
-import Layout from './components/Layout'
+import Page from './components/Page'
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Layout />
+        <Page />
       </BrowserRouter>
     )
   }
