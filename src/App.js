@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
+import store from './state/store'
 // vendor css files
 import 'bootstrap/dist/css/bootstrap.css'
-import './scss/font-awesome.css'
+import './public/styles/vendor/font-awesome.min.css'
 // minovate styles
-import './styles.scss'
+import './public/styles/styles.scss'
 
-import Layout from './components/Layout'
+import Page from './components/Page'
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Layout />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Page />
+        </BrowserRouter>
+      </Provider>
     )
   }
 }
